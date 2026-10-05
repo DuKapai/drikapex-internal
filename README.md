@@ -1,48 +1,73 @@
-# DRIKAPEX INTERNAL
+# DrikapexInternal
 
-## Project Overview
-DRIKAPEX INTERNAL is a web application designed to manage internal documents, employee records, and user accounts. It provides a user-friendly interface for authentication, data management, and notifications.
+## Supabase configuration
 
-## Project Structure
-The project consists of the following files and directories:
+The dashboard reads from the `employees`, `documents`, and `notifications` tables created by the supplied SQL script. Add the public project URL and anon key to `src/environments/environment.ts`:
 
-- **index.html**: Main entry point of the application.
-- **login.html**: User authentication page.
-- **dashboard.html**: Main interface after logging in.
-- **employees.html**: Page to list and manage employees.
-- **employee-detail.html**: Detailed view of a specific employee.
-- **documents.html**: Page for managing internal documents.
-- **notifications.html**: Displays user notifications.
-- **users.html**: Manages user accounts and roles.
-- **settings.html**: User account settings page.
+```ts
+export const environment = {
+	production: false,
+	supabaseUrl: 'https://YOUR_PROJECT_REF.supabase.co',
+	supabaseAnonKey: 'YOUR_PUBLIC_ANON_KEY'
+};
+```
 
-### CSS
-- **css/main.css**: Main stylesheet for the application.
-- **css/login.css**: Styles specific to the login page.
-- **css/dashboard.css**: Styles for the dashboard page.
+Use only the public anon key in this file. Never put a Supabase service-role key in a frontend build. The tables also need grants/RLS policies that allow the authenticated users of this internal app to select the required rows; the supplied schema does not create those policies.
 
-### JavaScript
-- **js/config.js**: Configuration settings for the application.
-- **js/supabase.js**: Initializes Supabase client and API interactions.
-- **js/auth.js**: Manages user authentication functionalities.
-- **js/employees.js**: Functions for managing employee data.
-- **js/documents.js**: Handles document management.
-- **js/notifications.js**: Manages user notifications.
-- **js/users.js**: Functions for managing user accounts and roles.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.23.
 
-### Assets
-- **assets/icons**: Directory containing icon files used in the application.
+## Development server
 
-## Setup Instructions
-1. Clone the repository to your local machine.
-2. Open the project in your preferred code editor.
-3. Ensure you have an active Supabase account and configure the necessary API keys in `js/config.js`.
-4. Open `index.html` in a web browser to view the application.
+To start a local development server, run:
 
-## Usage Guidelines
-- Use the login page to authenticate and access the dashboard.
-- Navigate through the application using the links provided in the dashboard.
-- Manage employee records, documents, and notifications as needed.
+```bash
+ng serve
+```
 
-## License
-This project is open-source and available for use and modification. Please refer to the license file for more details.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
