@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/auth.js" defer></script>
+    <script>
+        // Check authentication immediately
+        if (typeof checkAuth === 'function') {
+            checkAuth();
+        } else if (!localStorage.getItem('logged_in')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="js/config.js" defer></script>
+    <script src="js/supabase.js" defer></script>
+    <script src="js/employees.js" defer></script>
+    <script src="js/documents.js" defer></script>
+    <script src="js/notifications.js" defer></script>
+    <script src="js/users.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="employees.html">Employees</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="#" onclick="logout(); return false;">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="user-info">
+            <h2>Your Information</h2>
+            <p>Email: <span id="user-email"></span></p>
+            <!-- User-specific information will be displayed here -->
+        </section>
+        <section id="notifications">
+            <h2>Recent Notifications</h2>
+            <!-- Notifications will be displayed here -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 DRIKAPEX. All rights reserved.</p>
+    </footer>
+    <script>
+        // Display current user email
+        if (typeof getCurrentUser === 'function') {
+            const userEmail = getCurrentUser();
+            const userEmailEl = document.getElementById('user-email');
+            if (userEmailEl && userEmail) {
+                userEmailEl.textContent = userEmail;
+            }
+        }
+    </script>
+</body>
+</html>

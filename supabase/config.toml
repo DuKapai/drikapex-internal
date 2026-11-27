@@ -1,0 +1,11 @@
+[functions.delete-account]
+verify_jwt = true
+
+[functions.account-deletion-workflow]
+verify_jwt = true
+
+[functions.create-account]
+verify_jwt = true
+
+[functions.password-recovery]
+verify_jwt = false

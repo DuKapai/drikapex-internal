@@ -1,0 +1,151 @@
+.monthly { --monthly-primary: #325f49; --monthly-highlight: #73a58b; max-width: 1600px; margin: 0 auto; }
+.monthly__header, .monthly__toolbar, .monthly__section-heading, .monthly__group-heading,
+.monthly__task-main, .monthly__retry { display: flex; align-items: center; gap: 12px; }
+.monthly__header, .monthly__section-heading, .monthly__group-heading { justify-content: space-between; }
+.monthly__header { flex-wrap: wrap; margin-bottom: 14px; }
+.monthly__header-actions { display: flex; align-items: center; gap: 10px; }
+.monthly__header h1 { margin: 0; font-size: 24px; line-height: 1.25; }
+.monthly__header label { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 650; }
+.monthly__month-field { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; font-weight: 650; }
+.monthly__month-field .date-picker { width: 130px; }
+.monthly input:not([type="checkbox"]), .monthly select, .monthly textarea, .monthly__readonly {
+  min-width: 0;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.monthly textarea { min-height: 37px; resize: vertical; }
+.monthly input:focus-visible, .monthly select:focus-visible, .monthly textarea:focus-visible {
+  outline: 2px solid #8bb9a5; outline-offset: 1px;
+}
+.monthly__toolbar { justify-content: space-between; flex-wrap: wrap; margin-bottom: 18px; color: var(--muted); font-size: 12px; }
+.monthly__section-heading { flex-wrap: wrap; gap: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.monthly__section-heading h2 { display: flex; align-items: center; gap: 9px; margin: 0; color: var(--monthly-primary); font-size: 15px; }
+.monthly__section-heading h2 span, .monthly__group-number {
+  display: inline-grid; place-items: center; flex: 0 0 auto; width: 30px; height: 30px;
+  border-radius: 7px; color: #fff; background: #325f49; font-size: 13px; font-weight: 700;
+}
+.monthly__progress { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; }
+.monthly__progress progress { width: 95px; height: 7px; accent-color: var(--monthly-highlight); }
+.monthly__group { margin-top: 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); box-shadow: var(--shadow); }
+.monthly__group-heading { justify-content: flex-start; padding: 10px 14px; border-left: 4px solid var(--monthly-highlight); border-radius: 8px 8px 0 0; background: color-mix(in srgb, var(--monthly-highlight) 12%, var(--surface)); }
+.monthly__group-heading h3 { flex: 1; margin: 0; color: var(--monthly-primary); font-size: 14px; }
+.monthly__group-heading > span:last-child { color: var(--muted); font-size: 12px; }
+.monthly__filters { border-bottom: 1px solid var(--line); }
+.monthly__filters > summary { padding: 9px 14px; color: var(--monthly-primary); cursor: pointer; font-size: 12px; font-weight: 650; }
+.monthly__filter-content { display: grid; gap: 10px; padding: 0 14px 12px; }
+.monthly__search { display: grid; grid-template-columns: minmax(140px, 190px) minmax(200px, 1fr) auto; align-items: end; gap: 8px; }
+.monthly__filter-fields { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.monthly__search label, .monthly__filter-fields label, .monthly__filter-date { display: grid; gap: 4px; min-width: 0; color: var(--muted); font-size: 11px; font-weight: 600; }
+.monthly__clear-filters { padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: var(--surface); font-size: 12px; }
+.monthly__filter-content > small { color: var(--muted); }
+.monthly__task-list { display: grid; gap: 8px; padding: 10px; }
+.monthly__task { display: flex; align-items: flex-start; gap: 10px; min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.monthly__task-number { display: inline-grid; place-items: center; flex: 0 0 24px; height: 24px; border-radius: 50%; color: var(--monthly-primary); background: color-mix(in srgb, var(--monthly-highlight) 15%, var(--surface)); font-size: 12px; font-weight: 700; }
+.monthly__task-fields { display: grid; flex: 1; min-width: 0; gap: 7px; }
+.monthly__group-picker { display: flex; align-items: end; gap: 8px; max-width: 620px; }
+.monthly__group-picker > label { display: grid; flex: 1; min-width: 0; gap: 4px; }
+.monthly__group-picker > label > span { color: var(--muted); font-size: 11px; font-weight: 600; }
+.monthly__group-picker-menu { position: relative; flex: 0 0 auto; }
+.monthly__group-picker-menu > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 36px; padding: 8px 12px; border: 1px solid var(--monthly-highlight); border-radius: 7px;
+  color: var(--monthly-primary); background: color-mix(in srgb, var(--monthly-highlight) 9%, var(--surface));
+  cursor: pointer; font-size: 12px; font-weight: 650; list-style: none;
+}
+.monthly__group-picker-menu > summary::-webkit-details-marker { display: none; }
+.monthly__group-picker-menu > summary[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+.monthly__group-picker-menu > summary:focus-visible { outline: 2px solid #8bb9a5; outline-offset: 2px; }
+.monthly__group-picker-options {
+  position: absolute; z-index: 6; top: calc(100% + 6px); right: 0;
+  width: min(320px, 80vw); max-height: 280px; overflow-y: auto;
+  display: grid; gap: 4px; padding: 10px; border: 1px solid var(--line);
+  border-radius: 10px; background: var(--surface); box-shadow: 0 12px 30px rgb(0 0 0 / 20%);
+}
+.monthly__group-picker-options > strong { padding: 4px 8px 6px; color: var(--muted); font-size: 11px; }
+.monthly__group-option {
+  display: flex; justify-content: space-between; gap: 10px; padding: 9px 10px; border: 0;
+  border-radius: 6px; color: var(--ink); background: transparent; text-align: left; font-size: 12px; font-weight: 600;
+}
+.monthly__group-option:hover, .monthly__group-option--selected { color: var(--monthly-primary); background: color-mix(in srgb, var(--monthly-highlight) 16%, var(--surface)); }
+.monthly__group-picker-options > small { padding: 6px 8px 2px; color: var(--muted); font-size: 11px; }
+.monthly__group-destination { color: var(--muted); font-size: 11px; }
+.monthly__notes-section { margin-top: 24px; }
+.monthly__notes { display: grid; gap: 10px; padding: 12px; margin-top: 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
+.monthly__note { display: grid; gap: 8px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; }
+.monthly__note-heading { display: flex; justify-content: space-between; align-items: center; color: var(--monthly-primary); font-size: 12px; }
+.monthly__note textarea { min-height: 70px; }
+.monthly__note-text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; }
+.monthly__task-main { align-items: flex-start; gap: 8px; }
+.monthly__task-main > textarea { flex: 1; }
+.monthly__task-main > select { width: 172px; flex: 0 0 172px; }
+.monthly select.monthly__status { border-radius: 20px; color: #81643b; background: color-mix(in srgb, var(--accent) 15%, var(--surface)); }
+.monthly select.monthly__status--done { color: var(--monthly-primary); background: color-mix(in srgb, var(--monthly-highlight) 15%, var(--surface)); }
+.monthly__delete { border: 0; padding: 2px 6px; color: var(--danger); background: transparent; font-size: 22px; line-height: 1.3; }
+.monthly__task-details { display: grid; grid-template-columns: minmax(100px, .7fr) minmax(150px, 1fr) minmax(150px, .85fr) minmax(200px, 1.5fr); gap: 8px; }
+.monthly__task-details label, .monthly__team-field, .monthly__date-field { display: grid; align-content: start; gap: 3px; min-width: 0; }
+.monthly__task-details label > span { color: var(--muted); font-size: 11px; font-weight: 600; }
+.monthly__team-field > span, .monthly__date-field > span { color: var(--muted); font-size: 11px; font-weight: 600; }
+.monthly__team-picker { position: relative; }
+.monthly__team-picker summary {
+  overflow: hidden; min-height: 36px; padding: 8px 26px 8px 10px; border: 1px solid var(--line);
+  border-radius: 7px; color: var(--ink); background: var(--surface); cursor: pointer;
+  font-size: 12px; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap;
+}
+.monthly__team-picker summary::marker { color: var(--monthly-highlight); }
+.monthly__team-options {
+  position: absolute; z-index: 4; top: calc(100% + 4px); left: 0; width: min(320px, 42vw);
+  max-height: 300px; overflow-y: auto; padding: 8px; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--surface); box-shadow: var(--shadow);
+}
+.monthly__team-options > label { display: flex; align-items: center; gap: 8px; padding: 6px; border-radius: 5px; font-size: 12px; }
+.monthly__team-options > label:hover { background: color-mix(in srgb, var(--monthly-highlight) 9%, var(--surface)); }
+.monthly__team-options input[type="checkbox"] { flex: 0 0 auto; accent-color: #507b62; }
+.monthly__team-options > label > span { flex: 1; }
+.monthly__team-options > label > small, .monthly__team-hint { color: var(--muted); font-size: 10px; }
+.monthly__team-actions { display: flex; gap: 7px; padding-top: 7px; border-top: 1px solid var(--line); }
+.monthly__team-actions button { padding: 6px 9px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--surface); font-size: 11px; }
+.monthly__task-details textarea { min-height: 36px; }
+.monthly__retry { flex-wrap: wrap; }
+.monthly__retry button:not(.button) { padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--surface); }
+.monthly__warning { display: block; color: var(--danger); font-size: 12px; }
+.monthly__empty { margin: 4px; color: var(--muted); font-size: 13px; }
+.monthly__add { padding: 9px; border: 1px dashed var(--monthly-highlight); border-radius: 7px; color: var(--monthly-primary); background: color-mix(in srgb, var(--monthly-highlight) 6%, var(--surface)); font-weight: 650; }
+.monthly__new-task { border-left: 3px solid var(--monthly-highlight); }
+.monthly__dialog {
+  width: min(440px, calc(100vw - 32px)); max-width: none; padding: 22px;
+  border: 1px solid var(--line); border-radius: 12px; color: var(--ink);
+  background: var(--surface); box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
+}
+.monthly__dialog::backdrop { background: rgb(7 20 15 / 60%); }
+.monthly__dialog-heading { display: flex; align-items: center; gap: 12px; }
+.monthly__dialog-icon {
+  display: grid; place-items: center; flex: 0 0 38px; height: 38px;
+  border-radius: 10px; color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 14%, var(--surface)); font-size: 19px; font-weight: 700;
+}
+.monthly__dialog-eyebrow { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .07em; }
+.monthly__dialog h2 { margin: 3px 0 0; color: var(--ink); font-size: 19px; }
+.monthly__dialog p { margin: 18px 0 8px; color: var(--muted); font-size: 13px; }
+.monthly__dialog-task { padding: 11px 12px; border: 1px solid var(--line); border-radius: 7px; overflow-wrap: anywhere; font-size: 13px; font-weight: 600; }
+.monthly__dialog p.monthly__dialog-warning { margin: 10px 0 0; color: var(--danger); }
+.monthly__dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 22px; }
+.monthly__dialog .monthly__dialog-delete { border-color: #9c3d36; color: #fff; background: #9c3d36; }
+.monthly__dialog .monthly__dialog-delete:hover { background: #7d302b; }
+html[data-theme="dark"] .monthly { --monthly-primary: #b7d8c3; }
+html[data-theme="dark"] .monthly select.monthly__status { color: #e3c697; }
+html[data-theme="dark"] .monthly select.monthly__status--done { color: var(--monthly-primary); }
+@media (max-width: 900px) { .monthly__task-details, .monthly__filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .monthly__group-picker { max-width: none; }
+  .monthly__task-main { flex-wrap: wrap; }
+  .monthly__task-main > textarea { flex-basis: 100%; }
+  .monthly__task-main > select { flex: 1; width: auto; }
+  .monthly__progress progress { width: 60px; }
+}
